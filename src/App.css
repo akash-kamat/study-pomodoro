@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color: #0f0f0f;
+  background-color: transparent;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-container {
+  width: 350px;
+  height: 450px;
+  background-image: url('./assets/ui/window-main.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  position: relative;
+}
+
+.titlebar {
+  height: 60px;
+  /* Adjust based on design */
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding-top: 18px;
+  /* Adjust to position vertically */
+  padding-right: 18px;
+  /* Adjust to position horizontally */
+  box-sizing: border-box;
+  user-select: none;
+  cursor: default;
+  -webkit-app-region: drag;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.window-controls {
+  display: flex;
+  align-items: center;
+  -webkit-app-region: no-drag;
+  gap: 8px;
+}
+
+.focus-text {
+  font-size: 10px;
+  color: #4a4a4a;
+  text-transform: uppercase;
+  margin-top: 4px;
+  /* Align with button center visually */
+}
+
+.close-button {
+  width: 32px;
+  height: 32px;
+  background-image: url('./assets/ui/cross-idle.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  padding: 0;
+  transition: none;
+  /* No transition for pixel art state change */
+}
+
+.close-button:hover {
+  background-image: url('./assets/ui/cross-click.png');
+}
+
+.close-button:active {
+  background-image: url('./assets/ui/cross-hover.png');
+}
+
+.content {
+  flex: 1;
+  width: 100%;
+  padding: 20px;
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* Center vertically in the remaining space */
+  overflow-y: hidden;
+  /* Prevent scrolling */
+}
+
+.timer-display {
+  font-size: 48px;
+  margin-bottom: 40px;
+  color: #2c2c2c;
+  text-shadow: 2px 2px 0px #9e9e9e;
+}
+
+.timer-controls {
+  display: flex;
+  gap: 20px;
+}
+
+.pixel-btn {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
+  padding: 12px 16px;
+  border: 3px solid #2c2c2c;
+  background-color: #f0f0f0;
+  color: #2c2c2c;
+  cursor: pointer;
+  box-shadow: 4px 4px 0px #2c2c2c;
+  transition: none;
+  image-rendering: pixelated;
+  text-transform: uppercase;
+}
+
+.pixel-btn:hover {
+  background-color: #ffffff;
+}
+
+.pixel-btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0px #2c2c2c;
+}
