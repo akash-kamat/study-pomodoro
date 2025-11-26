@@ -5,16 +5,15 @@ import "./App.css";
 type Mode = 'focus' | 'short' | 'long';
 
 const MODES = {
-  focus: { time: 25 * 60, text: 'Time to Focus!', mascot: '( •_•)' },
-  short: { time: 5 * 60, text: 'Take a Breath', mascot: '( ˘ ɜ˘)' },
-  long: { time: 15 * 60, text: 'Long Rest', mascot: '( ◡_◡) zZZ' }
+  focus: { time: 25 * 60, text: 'Time to Focus!' },
+  short: { time: 5 * 60, text: 'Take a Breath' },
+  long: { time: 15 * 60, text: 'Long Rest' }
 };
 
 function App() {
   const [mode, setMode] = useState<Mode>('focus');
   const [timeLeft, setTimeLeft] = useState(MODES.focus.time);
   const [isActive, setIsActive] = useState(false);
-  const [task, setTask] = useState("");
 
   const playNotificationSound = () => {
     const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
@@ -103,8 +102,10 @@ function App() {
           </button>
         </div>
 
+        <div className="chimmy-sprite"></div>
+
         <div className="status-text">
-          {MODES[mode].mascot} {MODES[mode].text}
+          {MODES[mode].text}
         </div>
 
         <div className="timer-display">
@@ -123,16 +124,6 @@ function App() {
             className="control-button reset-button"
             title="Reset"
           ></button>
-        </div>
-
-        <div className="task-input-container">
-          <input
-            type="text"
-            className="task-input"
-            placeholder="What are we working on?"
-            value={task}
-            onChange={(e) => setTask(e.target.value)}
-          />
         </div>
       </div>
     </main>

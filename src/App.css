@@ -166,7 +166,8 @@ body {
 .mode-toggles {
   display: flex;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
+  /* Reduced margin to keep it tight */
 }
 
 .mode-btn {
@@ -197,32 +198,29 @@ body {
 
 .status-text {
   font-size: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   color: #4a4a4a;
   text-align: center;
   height: 20px;
-  /* Fixed height to prevent jumping */
 }
 
-.task-input-container {
-  margin-top: 25px;
-  width: 80%;
+@keyframes play-chimmy {
+  from {
+    background-position: 0px;
+  }
+
+  to {
+    background-position: -896px;
+  }
 }
 
-.task-input {
-  width: 100%;
-  background: transparent;
-  border: none;
-  border-bottom: 2px solid #2c2c2c;
-  font-family: 'Press Start 2P', cursive;
-  font-size: 10px;
-  color: #2c2c2c;
-  padding: 5px;
-  text-align: center;
-  outline: none;
-}
-
-.task-input::placeholder {
-  color: #888;
-  opacity: 0.7;
+.chimmy-sprite {
+  width: 128px;
+  height: 128px;
+  background-image: url('./assets/ui/chimmy idle.png');
+  animation: play-chimmy 1.8s steps(7) infinite;
+  image-rendering: pixelated;
+  margin-bottom: 10px;
+  transform: scale(1.2);
+  /* Slight scale down if needed to fit */
 }
