@@ -60,3 +60,4 @@ jobs:
             src-tauri/target/release/bundle/
             src-tauri/target/universal-apple-darwin/release/bundle/
             src-tauri/target/release/pomo-tauri.exe
+            src-tauri/target/universal-apple-darwin/release/pomo-tauri
