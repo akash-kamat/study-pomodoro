@@ -74,13 +74,33 @@ function App() {
   return (
     <main className="app-container">
       <div className="titlebar" data-tauri-drag-region>
+        <span className="focus-text">{MODES[mode].text}</span>
         <div className="window-controls">
-          <span className="focus-text">focus work</span>
           <button className="close-button" onClick={handleClose} title="Close"></button>
         </div>
       </div>
 
       <div className="content">
+        <div className="chimmy-sprite"></div>
+
+        <div className="timer-display">
+          {Math.floor(timeLeft / 60).toString().padStart(2, '0')}:
+          {(timeLeft % 60).toString().padStart(2, '0')}
+        </div>
+
+        <div className="timer-controls">
+          <button
+            onClick={toggleTimer}
+            className="control-button start-button"
+            title={isActive ? "Pause" : "Start"}
+          ></button>
+          <button
+            onClick={resetTimer}
+            className="control-button reset-button"
+            title="Reset"
+          ></button>
+        </div>
+
         <div className="mode-toggles">
           <button
             className={`mode-btn ${mode === 'focus' ? 'active' : ''}`}
@@ -100,30 +120,6 @@ function App() {
           >
             Long
           </button>
-        </div>
-
-        <div className="chimmy-sprite"></div>
-
-        <div className="status-text">
-          {MODES[mode].text}
-        </div>
-
-        <div className="timer-display">
-          {Math.floor(timeLeft / 60).toString().padStart(2, '0')}:
-          {(timeLeft % 60).toString().padStart(2, '0')}
-        </div>
-
-        <div className="timer-controls">
-          <button
-            onClick={toggleTimer}
-            className="control-button start-button"
-            title={isActive ? "Pause" : "Start"}
-          ></button>
-          <button
-            onClick={resetTimer}
-            className="control-button reset-button"
-            title="Reset"
-          ></button>
         </div>
       </div>
     </main>
