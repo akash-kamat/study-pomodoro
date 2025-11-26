@@ -51,12 +51,16 @@ function App() {
         </div>
 
         <div className="timer-controls">
-          <button onClick={toggleTimer} className="pixel-btn">
-            {isActive ? "PAUSE" : "START"}
-          </button>
-          <button onClick={resetTimer} className="pixel-btn">
-            RESET
-          </button>
+          <button
+            onClick={toggleTimer}
+            className="control-button start-button"
+            title={isActive ? "Pause" : "Start"}
+          ></button>
+          <button
+            onClick={resetTimer}
+            className="control-button reset-button"
+            title="Reset"
+          ></button>
         </div>
       </div>
     </main>

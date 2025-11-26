@@ -39,6 +39,9 @@ body {
   image-rendering: pixelated;
   image-rendering: crisp-edges;
   position: relative;
+  padding-right: 35px;
+  /* Shift content left */
+  box-sizing: border-box;
 }
 
 .titlebar {
@@ -127,25 +130,40 @@ body {
   gap: 20px;
 }
 
-.pixel-btn {
-  font-family: 'Press Start 2P', cursive;
-  font-size: 10px;
-  padding: 12px 16px;
-  border: 3px solid #2c2c2c;
-  background-color: #f0f0f0;
-  color: #2c2c2c;
+.control-button {
+  width: 64px;
+  height: 64px;
+  border: none;
+  background-color: transparent;
+  background-size: contain;
+  background-repeat: no-repeat;
   cursor: pointer;
-  box-shadow: 4px 4px 0px #2c2c2c;
-  transition: none;
+  padding: 0;
   image-rendering: pixelated;
-  text-transform: uppercase;
+  image-rendering: crisp-edges;
+  transition: none;
 }
 
-.pixel-btn:hover {
-  background-color: #ffffff;
+.start-button {
+  background-image: url('./assets/ui/start-idle.png');
 }
 
-.pixel-btn:active {
-  transform: translate(4px, 4px);
-  box-shadow: 0px 0px 0px #2c2c2c;
+.start-button:hover {
+  background-image: url('./assets/ui/start-hover.png');
+}
+
+.start-button:active {
+  background-image: url('./assets/ui/start-pressed.png');
+}
+
+.reset-button {
+  background-image: url('./assets/ui/reset-idle.png');
+}
+
+.reset-button:hover {
+  background-image: url('./assets/ui/reset-hover.png');
+}
+
+.reset-button:active {
+  background-image: url('./assets/ui/reset-pressed.png');
 }
