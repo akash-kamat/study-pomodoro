@@ -14,6 +14,7 @@ function App() {
   const [mode, setMode] = useState<Mode>('focus');
   const [timeLeft, setTimeLeft] = useState(MODES.focus.time);
   const [isActive, setIsActive] = useState(false);
+  const [isPinned, setIsPinned] = useState(false);
 
   const playNotificationSound = () => {
     const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
@@ -71,11 +72,22 @@ function App() {
     appWindow.close();
   };
 
+  const togglePin = async () => {
+    const newPinnedState = !isPinned;
+    setIsPinned(newPinnedState);
+    await appWindow.setAlwaysOnTop(newPinnedState);
+  };
+
   return (
     <main className="app-container">
       <div className="titlebar" data-tauri-drag-region>
         <span className="focus-text">{MODES[mode].text}</span>
         <div className="window-controls">
+          <button
+            className={`pin-button ${isPinned ? 'active' : ''}`}
+            onClick={togglePin}
+            title="Always on Top"
+          ></button>
           <button className="close-button" onClick={handleClose} title="Close"></button>
         </div>
       </div>
