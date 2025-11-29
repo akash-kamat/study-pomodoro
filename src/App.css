@@ -1,4 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import "tailwindcss";
+
+* {
+  font-family: 'Press Start 2P', cursive !important;
+  box-sizing: border-box;
+}
 
 :root {
   font-family: 'Press Start 2P', cursive;
@@ -8,11 +13,6 @@
 
   color: #0f0f0f;
   background-color: transparent;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: none;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 html,
@@ -28,6 +28,7 @@ body {
   align-items: center;
   user-select: none;
   /* Disable text selection */
+  font-family: 'Press Start 2P', cursive;
 }
 
 button:focus {
@@ -46,9 +47,11 @@ button:focus {
   image-rendering: pixelated;
   image-rendering: crisp-edges;
   position: relative;
-  padding-right: 35px;
+  padding-right: 0px;
   /* Shift content left */
   box-sizing: border-box;
+  overflow: hidden;
+  /* Prevent scrollbars */
 }
 
 .titlebar {
@@ -202,35 +205,28 @@ button:focus {
 
 .mode-toggles {
   display: flex;
-  gap: 15px;
+  gap: 8px;
   margin-top: auto;
-  /* Push to bottom */
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+  flex-wrap: nowrap;
 }
 
-.mode-btn {
-  font-family: 'Press Start 2P', cursive;
-  font-size: 8px;
-  padding: 5px;
-  border: none;
-  background-color: transparent;
-  color: #2c2c2c;
-  cursor: pointer;
-  image-rendering: pixelated;
+.mode-btn-retro {
+  font-size: 8px !important;
   text-transform: uppercase;
-  opacity: 0.5;
-  transition: none;
+  image-rendering: pixelated;
+  padding: 0px 4px !important;
+  min-height: 0 !important;
+  height: 20px !important;
+  min-width: 50px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
-.mode-btn:hover {
-  opacity: 0.8;
-  text-decoration: underline;
-}
-
-.mode-btn.active {
-  opacity: 1;
-  text-decoration: underline;
-  box-shadow: none;
+.active-mode {
+  border-color: #ffffff !important;
 }
 
 @keyframes play-chimmy {

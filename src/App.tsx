@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getCurrentWindow } from "@tauri-apps/api/window";
+import { Button } from 'pixel-retroui';
 import "./App.css";
 
 type Mode = 'focus' | 'short' | 'long';
@@ -114,24 +115,36 @@ function App() {
         </div>
 
         <div className="mode-toggles">
-          <button
-            className={`mode-btn ${mode === 'focus' ? 'active' : ''}`}
+          <Button
+            bg="#ff8e8e"
+            textColor="#2c2c2c"
+            borderColor="#454545"
+            shadow="#c45e5e"
+            className={`mode-btn-retro ${mode === 'focus' ? 'active-mode' : ''}`}
             onClick={() => switchMode('focus')}
           >
-            Focus
-          </button>
-          <button
-            className={`mode-btn ${mode === 'short' ? 'active' : ''}`}
+            FOCUS
+          </Button>
+          <Button
+            bg="#8ecae6"
+            textColor="#2c2c2c"
+            borderColor="#454545"
+            shadow="#5e9ac4"
+            className={`mode-btn-retro ${mode === 'short' ? 'active-mode' : ''}`}
             onClick={() => switchMode('short')}
           >
-            Short
-          </button>
-          <button
-            className={`mode-btn ${mode === 'long' ? 'active' : ''}`}
+            SHORT
+          </Button>
+          <Button
+            bg="#90be6d"
+            textColor="#2c2c2c"
+            borderColor="#454545"
+            shadow="#5e8c4d"
+            className={`mode-btn-retro ${mode === 'long' ? 'active-mode' : ''}`}
             onClick={() => switchMode('long')}
           >
-            Long
-          </button>
+            LONG
+          </Button>
         </div>
       </div>
     </main>
