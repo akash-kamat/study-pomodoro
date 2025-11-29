@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { getCurrentWindow } from "@tauri-apps/api/window";
+import { WebviewWindow } from "@tauri-apps/api/webviewWindow";
 import { Button } from 'pixel-retroui';
+import StatsWindow from "./components/StatsWindow";
+import { saveStat } from "./utils/stats";
 import "./App.css";
 
 type Mode = 'focus' | 'short' | 'long';
@@ -12,10 +15,24 @@ const MODES = {
 };
 
 function App() {
+  // Simple routing based on URL query param
+  const [isStatsWindow, setIsStatsWindow] = useState(false);
+
+  useEffect(() => {
+    if (window.location.search.includes('window=stats')) {
+      setIsStatsWindow(true);
+    }
+  }, []);
+
+  if (isStatsWindow) {
+    return <StatsWindow />;
+  }
+
   const [mode, setMode] = useState<Mode>('focus');
   const [timeLeft, setTimeLeft] = useState(MODES.focus.time);
   const [isActive, setIsActive] = useState(false);
   const [isPinned, setIsPinned] = useState(false);
+  const [cycleCount, setCycleCount] = useState(0);
 
   const playNotificationSound = () => {
     const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
@@ -47,10 +64,29 @@ function App() {
     } else if (timeLeft === 0 && isActive) {
       setIsActive(false);
       playNotificationSound();
+      handleTimerComplete();
     }
 
     return () => clearInterval(interval);
   }, [isActive, timeLeft]);
+
+  const handleTimerComplete = () => {
+    if (mode === 'focus') {
+      saveStat('focus', MODES.focus.time);
+      const newCycleCount = cycleCount + 1;
+      setCycleCount(newCycleCount);
+
+      if (newCycleCount % 4 === 0) {
+        switchMode('long');
+      } else {
+        switchMode('short');
+      }
+    } else {
+      if (mode === 'short') saveStat('short', MODES.short.time);
+      if (mode === 'long') saveStat('long', MODES.long.time);
+      switchMode('focus');
+    }
+  };
 
   const toggleTimer = () => {
     setIsActive(!isActive);
@@ -79,9 +115,37 @@ function App() {
     await appWindow.setAlwaysOnTop(newPinnedState);
   };
 
+  const openStats = async () => {
+    console.log("Attempting to open stats window...");
+    try {
+      const webview = new WebviewWindow('stats', {
+        url: 'index.html?window=stats',
+        title: 'Statistics',
+        width: 300,
+        height: 400,
+        decorations: true,
+        transparent: false,
+        resizable: false,
+        alwaysOnTop: true
+      });
+
+      webview.once('tauri://created', function () {
+        console.log("Stats window created successfully");
+      });
+
+      webview.once('tauri://error', function (e) {
+        console.error("Error creating stats window:", e);
+      });
+    } catch (err) {
+      console.error("Exception in openStats:", err);
+    }
+  };
+
   return (
     <main className="app-container">
+      {/* <button className="settings-button" onClick={openStats} title="Stats"></button> */}
       <div className="titlebar" data-tauri-drag-region>
+
         <span className="focus-text">{MODES[mode].text}</span>
         <div className="window-controls">
           <button
@@ -99,6 +163,12 @@ function App() {
         <div className="timer-display">
           {Math.floor(timeLeft / 60).toString().padStart(2, '0')}:
           {(timeLeft % 60).toString().padStart(2, '0')}
+        </div>
+
+        <div className="cycle-dots">
+          {[...Array(4)].map((_, i) => (
+            <div key={i} className={`dot ${i < (cycleCount % 4) ? 'filled' : ''}`}></div>
+          ))}
         </div>
 
         <div className="timer-controls">
