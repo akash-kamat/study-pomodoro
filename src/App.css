@@ -207,6 +207,396 @@ button:focus {
   display: flex;
   gap: 8px;
   margin-top: auto;
+  background-color: transparent;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  /* Disable text selection */
+  font-family: 'Press Start 2P', cursive;
+}
+
+button:focus {
+  outline: none;
+  /* Remove focus outline */
+}
+
+.app-container {
+  width: 350px;
+  height: 450px;
+  background-image: url('./assets/ui/window-main.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  position: relative;
+  padding-right: 0px;
+  /* Shift content left */
+  box-sizing: border-box;
+  overflow: hidden;
+  /* Prevent scrollbars */
+}
+
+.titlebar {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-top: 18px;
+  padding-right: 18px;
+  padding-left: 30px;
+  box-sizing: border-box;
+  user-select: none;
+  cursor: default;
+  -webkit-app-region: drag;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.window-controls {
+  display: flex;
+  align-items: center;
+  -webkit-app-region: no-drag;
+  gap: 8px;
+}
+
+.focus-text {
+  font-size: 10px;
+  color: #4a4a4a;
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+
+.pin-button {
+  width: 32px;
+  height: 32px;
+  background-image: url('./assets/ui/pin-idle.svg');
+  background-size: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  padding: 0;
+  transition: none;
+  opacity: 0.6;
+}
+
+.pin-button:hover {
+  opacity: 1;
+}
+
+.pin-button.active {
+  background-image: url('./assets/ui/pin-active.svg');
+  opacity: 1;
+}
+
+.close-button {
+  width: 32px;
+  height: 32px;
+  background-image: url('./assets/ui/cross-idle.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  padding: 0;
+  transition: none;
+  margin-right: 5px;
+}
+
+.close-button:hover {
+  background-image: url('./assets/ui/cross-click.png');
+}
+
+.close-button:active {
+  background-image: url('./assets/ui/cross-hover.png');
+}
+
+.content {
+  flex: 1;
+  width: 100%;
+  padding: 20px;
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-y: hidden;
+}
+
+.timer-display {
+  font-size: 48px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  color: #2c2c2c;
+  text-shadow: 2px 2px 0px #d1d1d1;
+}
+
+.timer-controls {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.control-button {
+  width: 64px;
+  height: 64px;
+  border: none;
+  background-color: transparent;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  padding: 0;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  transition: none;
+}
+
+.start-button {
+  background-image: url('./assets/ui/start-idle.png');
+}
+
+.start-button:hover {
+  background-image: url('./assets/ui/start-hover.png');
+}
+
+.start-button:active {
+  background-image: url('./assets/ui/start-pressed.png');
+}
+
+.reset-button {
+  background-image: url('./assets/ui/reset-idle.png');
+}
+
+.reset-button:hover {
+  background-image: url('./assets/ui/reset-hover.png');
+}
+
+.reset-button:active {
+  background-image: url('./assets/ui/reset-pressed.png');
+}
+
+/* Advanced Features Styles */
+
+.mode-toggles {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+  background-color: transparent;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  /* Disable text selection */
+  font-family: 'Press Start 2P', cursive;
+}
+
+button:focus {
+  outline: none;
+  /* Remove focus outline */
+}
+
+.app-container {
+  width: 350px;
+  height: 450px;
+  background-image: url('./assets/ui/window-main.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  position: relative;
+  padding-right: 0px;
+  /* Shift content left */
+  box-sizing: border-box;
+  overflow: hidden;
+  /* Prevent scrollbars */
+}
+
+.titlebar {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-top: 18px;
+  padding-right: 18px;
+  padding-left: 30px;
+  box-sizing: border-box;
+  user-select: none;
+  cursor: default;
+  -webkit-app-region: drag;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.window-controls {
+  display: flex;
+  align-items: center;
+  -webkit-app-region: no-drag;
+  gap: 8px;
+}
+
+.focus-text {
+  font-size: 10px;
+  color: #4a4a4a;
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+
+.pin-button {
+  width: 32px;
+  height: 32px;
+  background-image: url('./assets/ui/pin-idle.svg');
+  background-size: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  padding: 0;
+  transition: none;
+  opacity: 0.6;
+}
+
+.pin-button:hover {
+  opacity: 1;
+}
+
+.pin-button.active {
+  background-image: url('./assets/ui/pin-active.svg');
+  opacity: 1;
+}
+
+.close-button {
+  width: 32px;
+  height: 32px;
+  background-image: url('./assets/ui/cross-idle.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  padding: 0;
+  transition: none;
+  margin-right: 5px;
+}
+
+.close-button:hover {
+  background-image: url('./assets/ui/cross-click.png');
+}
+
+.close-button:active {
+  background-image: url('./assets/ui/cross-hover.png');
+}
+
+.content {
+  flex: 1;
+  width: 100%;
+  padding: 20px;
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-y: hidden;
+}
+
+.timer-display {
+  font-size: 48px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  color: #2c2c2c;
+  text-shadow: 2px 2px 0px #d1d1d1;
+}
+
+.timer-controls {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.control-button {
+  width: 64px;
+  height: 64px;
+  border: none;
+  background-color: transparent;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  padding: 0;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  transition: none;
+}
+
+.start-button {
+  background-image: url('./assets/ui/start-idle.png');
+}
+
+.start-button:hover {
+  background-image: url('./assets/ui/start-hover.png');
+}
+
+.start-button:active {
+  background-image: url('./assets/ui/start-pressed.png');
+}
+
+.reset-button {
+  background-image: url('./assets/ui/reset-idle.png');
+}
+
+.reset-button:hover {
+  background-image: url('./assets/ui/reset-hover.png');
+}
+
+.reset-button:active {
+  background-image: url('./assets/ui/reset-pressed.png');
+}
+
+/* Advanced Features Styles */
+
+.mode-toggles {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
   margin-bottom: 20px;
   justify-content: center;
   flex-wrap: nowrap;
@@ -225,8 +615,14 @@ button:focus {
   justify-content: center !important;
 }
 
-.active-mode {
+.mode-btn-retro:hover {
+  filter: brightness(1.2);
+}
+
+.mode-btn-retro.active {
   border-color: #ffffff !important;
+  box-shadow: none !important;
+  transform: translateY(2px) !important;
 }
 
 @keyframes play-chimmy {

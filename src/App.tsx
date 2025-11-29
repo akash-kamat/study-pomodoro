@@ -120,7 +120,7 @@ function App() {
             textColor="#2c2c2c"
             borderColor="#454545"
             shadow="#c45e5e"
-            className={`mode-btn-retro ${mode === 'focus' ? 'active-mode' : ''}`}
+            className={`mode-btn-retro ${mode === 'focus' ? 'active' : ''}`}
             onClick={() => switchMode('focus')}
           >
             FOCUS
@@ -130,7 +130,7 @@ function App() {
             textColor="#2c2c2c"
             borderColor="#454545"
             shadow="#5e9ac4"
-            className={`mode-btn-retro ${mode === 'short' ? 'active-mode' : ''}`}
+            className={`mode-btn-retro ${mode === 'short' ? 'active' : ''}`}
             onClick={() => switchMode('short')}
           >
             SHORT
@@ -140,7 +140,7 @@ function App() {
             textColor="#2c2c2c"
             borderColor="#454545"
             shadow="#5e8c4d"
-            className={`mode-btn-retro ${mode === 'long' ? 'active-mode' : ''}`}
+            className={`mode-btn-retro ${mode === 'long' ? 'active' : ''}`}
             onClick={() => switchMode('long')}
           >
             LONG
