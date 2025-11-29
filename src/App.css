@@ -644,3 +644,14 @@ button:focus {
   margin-bottom: 10px;
   transform: scale(1.2);
 }
+.pause-button {
+  background-image: url('./assets/ui/pause-idle.png');
+}
+
+.pause-button:hover {
+  background-image: url('./assets/ui/pause-hover.png');
+}
+
+.pause-button:active {
+  background-image: url('./assets/ui/pause-pressed.png');
+}

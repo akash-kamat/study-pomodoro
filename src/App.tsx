@@ -104,7 +104,7 @@ function App() {
         <div className="timer-controls">
           <button
             onClick={toggleTimer}
-            className="control-button start-button"
+            className={`control-button ${isActive ? 'pause-button' : 'start-button'}`}
             title={isActive ? "Pause" : "Start"}
           ></button>
           <button
