@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getCurrentWindow } from "@tauri-apps/api/window";
-import { WebviewWindow } from "@tauri-apps/api/webviewWindow";
+// import { WebviewWindow } from "@tauri-apps/api/webviewWindow";
 import { Button } from 'pixel-retroui';
 import StatsWindow from "./components/StatsWindow";
 import { saveStat } from "./utils/stats";
@@ -115,6 +115,7 @@ function App() {
     await appWindow.setAlwaysOnTop(newPinnedState);
   };
 
+  /*
   const openStats = async () => {
     console.log("Attempting to open stats window...");
     try {
@@ -140,6 +141,7 @@ function App() {
       console.error("Exception in openStats:", err);
     }
   };
+  */
 
   return (
     <main className="app-container">
